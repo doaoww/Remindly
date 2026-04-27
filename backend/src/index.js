@@ -50,7 +50,7 @@ app.use('/api/flashcards', flashcardsRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/tags', tagsRoutes);
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://172.20.10.4:3000'],
+  origin: ['http://localhost:3000', 'http://172.20.10.4:3000','https://remindly-sigma.vercel.app', /\.vercel\.app$/],
   credentials: true,
 }));
 
