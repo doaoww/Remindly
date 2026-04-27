@@ -46,7 +46,7 @@ export const useFlashcardsStore = create<FlashcardsState>((set) => ({
 
   generateFlashcards: async (noteId, mode = 'rule') => {
     const res = await api.post('/flashcards/generate', { noteId, mode });
-    return res.data.data;
+    return res.data.data as { generated: number; skipped: number; flashcards: Flashcard[] };
   },
 
   reviewFlashcard: async (id, rating) => {
