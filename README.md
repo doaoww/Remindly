@@ -1,200 +1,118 @@
+```markdown
 # 🧠 Remindly — Intelligent Student Learning Platform
 
-> Transform your notes into lasting memory. Notes + AI Flashcards + Spaced Repetition.
+> Turn your notes into lasting memory. AI-powered flashcards + spaced repetition, all in one place.
 
-![Version](https://img.shields.io/badge/version-1.0.0-6366f1?style=flat-square)
-![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)
-![Node.js](https://img.shields.io/badge/Node.js-24-339933?style=flat-square&logo=node.js)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-4169E1?style=flat-square&logo=postgresql)
-![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
+🔗 **Live:** [remindly.vercel.app](https://remindly-sigma.vercel.app/)
 
 ---
 
-## 📌 Table of Contents
+## 📖 How the App Works
 
-- [About the Project](#about-the-project)
-- [The Problem We Solve](#the-problem-we-solve)
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [How to Use](#how-to-use)
-- [Project Structure](#project-structure)
-- [Getting Started](#getting-started)
-- [API Reference](#api-reference)
-- [Spaced Repetition Algorithm](#spaced-repetition-algorithm)
-- [Deployment](#deployment)
-- [Contributing](#contributing)
+### For Students
 
----
+**1. Create your notes**
+Go to `/notes` and click **"New Note"**. Give it a title like *"Biology — Chapter 3"* and start writing in the rich text editor. Add color-coded tags to organize by subject (Mathematics, Science, History, Languages — or create your own).
 
-## 🎯 About the Project
+**2. Generate flashcards automatically**
+Open any note and click **"Generate"** in the top toolbar. Choose your method:
 
-Remindly is a full-stack intelligent learning platform designed for university students, self-learners, and anyone preparing for exams. It was built to solve a real problem: students take notes but never actually retain what they've written.
-
-Most students highlight their notes, re-read them before exams, and forget 70% within a week. Remindly changes this by combining three proven learning techniques — organized note-taking, active recall with flashcards, and spaced repetition scheduling — into one seamless experience.
-
-**Built with:** Next.js 16, Node.js, Express, PostgreSQL, TailwindCSS, DeepSeek AI
-
----
-
-## 🔥 The Problem We Solve
-
-| Traditional studying | With Remindly |
-|---------------------|---------------|
-| Re-reading notes passively | Active recall with flashcards |
-| Forgetting 70% within a week | 90%+ retention with spaced repetition |
-| Making flashcards by hand (hours) | AI generates cards in seconds |
-| No sense of progress | Visual dashboard and streak tracking |
-| Notes scattered across apps | Everything in one place |
-
----
-
-## ✨ Features
-
-### 📝 Smart Notes
-- Rich text editor with bold, italic, lists, and code formatting
-- Custom color-coded tag system to organize by subject
-- Full-text search across all your notes
-- Pin important notes to the top
-- Auto-save as you type
-
-### 🃏 AI Flashcard Generation
-Two generation modes:
-
-**Pattern Matching (free, instant):**
-Works when your notes follow these formats:
-
+**Pattern Matching (free, instant)** — works when your notes follow these formats:
+```
 Photosynthesis = Process where plants convert sunlight to energy
 Mitosis: Cell division producing two identical daughter cells
 ATP — Adenosine triphosphate, the energy currency of cells
 Q: What is DNA?
 A: Deoxyribonucleic acid, carries genetic information
+1. Osmosis - Movement of water through a semipermeable membrane
+```
 
-**AI Mode (DeepSeek):**
-Works on any note format. The AI reads your notes and intelligently creates Q&A pairs covering the key concepts. No special formatting needed.
+**AI Generation (DeepSeek)** — works on any note format. The AI reads your notes and intelligently creates Q&A flashcards covering the key concepts. No special formatting needed.
 
-### 🔁 Spaced Repetition System
-Based on the SM-2 algorithm (same used by Anki):
-- Cards are scheduled based on how well you know them
-- Easy cards appear less frequently, hard cards more often
-- Review sessions focus only on cards due today
-- Tracks `ease_factor`, `interval_days`, `repetition_count` per card
+Generated cards appear instantly in the side panel. Duplicate cards are automatically skipped.
 
-### 📊 Progress Dashboard
-- Total notes and flashcards count
-- Cards due for review today
-- Weekly activity bar chart
-- Study days streak counter
-- Quick access to recent notes
+**3. Review your cards**
+Click **"Review"** in the sidebar. Cards due today are loaded automatically. Tap each card to flip it, then rate yourself honestly:
+- ✅ **Easy** — you knew it well, see it again in many days
+- 🟡 **Hard** — you struggled, see it sooner
+- ❌ **Again** — you didn't know it, see it tomorrow
 
-### 🗂️ Folder Organization
-- Flashcards grouped by the note they were generated from
-- Standalone cards folder for manually created cards
-- See card count and due count per folder at a glance
+The algorithm schedules your next review automatically.
 
-### 🎯 Review Mode
-- One card at a time, distraction-free
-- Tap to flip between question and answer
-- Rate yourself: **Easy** (longer interval), **Hard** (shorter interval), **Again** (reset to tomorrow)
-- Session completion screen with accuracy percentage and XP
-
----
-
-## 🛠️ Tech Stack
-
-### Frontend
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| Next.js | 16.2 | React framework with App Router |
-| TailwindCSS | 3.4 | Utility-first CSS styling |
-| Zustand | 4.x | Lightweight state management |
-| TipTap | 2.x | Rich text editor |
-| Axios | 1.x | HTTP client with interceptors |
-| Lucide React | 0.x | Icon library |
-
-### Backend
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| Node.js | 24 | JavaScript runtime |
-| Express | 4.19 | REST API framework |
-| PostgreSQL | 16 | Relational database |
-| JWT | 9.x | Authentication tokens |
-| bcryptjs | 2.x | Password hashing |
-| express-validator | 7.x | Input validation |
-| express-rate-limit | 7.x | API rate limiting |
-
-### AI & External Services
-| Service | Purpose |
-|---------|---------|
-| DeepSeek API | AI flashcard generation from notes |
-| Railway | Backend hosting + PostgreSQL database |
-| Vercel | Frontend hosting |
-
----
-
-## 📖 How to Use
-
-### Step 1 — Create an account
-Go to the app and register with your email and password. Default subject tags are created automatically.
-
-### Step 2 — Write your first note
-- Click **Notes** in the sidebar
-- Click **New Note**
-- Give it a title like "Biology — Chapter 3"
-- Add tags like "Science" to organize it
-- Write your study content in the editor
-
-**Tips for better flashcard generation:**
-
-Good format for Pattern Matching:
-Osmosis = Movement of water through a semipermeable membrane
-Diffusion: Movement of molecules from high to low concentration
-Enzyme — A biological catalyst that speeds up chemical reactions
-Or Q&A format:
-Q: What is the powerhouse of the cell?
-A: The mitochondria
-
-
-### Step 3 — Generate flashcards
-- Inside your note, click the **Generate** button (top right)
-- Choose **Pattern Matching** for free instant generation
-- Or choose **AI Generation** for smart cards from any text
-- Cards appear in the side panel immediately
-
-### Step 4 — Review your cards
-- Click **Review** in the sidebar
-- Cards due today are shown automatically
-- Tap each card to flip it
-- Rate yourself honestly:
-  - ✅ **Easy** — you knew it well, see it again in many days
-  - 🟡 **Hard** — you struggled, see it sooner
-  - ❌ **Again** — you didn't know it, see it tomorrow
-
-### Step 5 — Track your progress
+**4. Track your progress**
 The **Dashboard** shows:
-- How many cards you've reviewed this week
-- Your study streak
-- Which notes you've been working on
-- Cards coming up for review
+- Total notes and flashcards
+- Cards due for review today
+- Weekly activity bar chart (reviews per day)
+- Study days counter
+- Quick links to recent notes
+
+**5. Organize with folders**
+In the **Flashcards** page, cards are grouped into folders by the note they were generated from. Each folder shows a preview of questions and how many cards are due. Click a folder to see all its cards.
+
+---
+
+## 🛠 Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Framework | Next.js 16 (App Router) |
+| Language | TypeScript |
+| Styling | Tailwind CSS v3 |
+| State Management | Zustand |
+| Rich Text Editor | TipTap |
+| HTTP Client | Axios |
+| Backend | Node.js + Express |
+| Database | PostgreSQL |
+| Authentication | JWT + bcryptjs |
+| AI Generation | DeepSeek API |
+| Deployment (Frontend) | Vercel |
+| Deployment (Backend) | Railway |
+
+---
+
+## ✨ Features
+
+- Rich text note editor with bold, italic, lists, and code formatting
+- Custom color-coded tag system to organize notes by subject
+- Full-text search across all notes
+- Pin important notes to the top
+- Auto-save as you type (1.5s debounce)
+- AI flashcard generation via DeepSeek — works on any note format
+- Pattern matching generation — free and instant, no API key needed
+- Duplicate card detection — never generates the same card twice
+- Flashcard folders — cards grouped by their source note
+- SM-2 spaced repetition algorithm (same as Anki)
+- Review mode with animated flip cards
+- Easy / Hard / Again rating system
+- Session completion screen with accuracy ring chart and XP
+- Weekly activity bar chart on dashboard
+- JWT authentication with bcrypt password hashing
+- Toast notifications for all errors and successes
+- Responsive dark glassmorphism UI
+- Privacy Policy and Terms of Service pages
+- Landing page with pricing, features, and testimonials
 
 ---
 
 ## 📁 Project Structure
 
+```
 remindly/
 ├── README.md
-├── docker-compose.yml          # Local PostgreSQL setup
+├── docker-compose.yml              # Local PostgreSQL (optional)
 │
-├── frontend/                   # Next.js application
+├── frontend/                       # Next.js application
 │   ├── src/
 │   │   ├── app/
-│   │   │   ├── page.tsx        # Landing page
-│   │   │   ├── layout.tsx      # Root layout
-│   │   │   ├── globals.css     # Global styles + CSS variables
+│   │   │   ├── page.tsx            # Landing page
+│   │   │   ├── layout.tsx          # Root layout + metadata
+│   │   │   ├── globals.css         # Global styles + CSS variables
 │   │   │   ├── (auth)/
 │   │   │   │   ├── login/page.tsx
 │   │   │   │   └── register/page.tsx
 │   │   │   ├── (app)/
-│   │   │   │   ├── layout.tsx       # Auth guard wrapper
+│   │   │   │   ├── layout.tsx      # Auth guard
 │   │   │   │   ├── dashboard/page.tsx
 │   │   │   │   ├── notes/page.tsx
 │   │   │   │   ├── notes/[id]/page.tsx
@@ -207,63 +125,66 @@ remindly/
 │   │   │   │   ├── Button.tsx
 │   │   │   │   ├── Input.tsx
 │   │   │   │   ├── Modal.tsx
-│   │   │   │   └── Toast.tsx
+│   │   │   │   └── Toast.tsx       # Global toast notifications
 │   │   │   └── layout/
 │   │   │       ├── Sidebar.tsx
-│   │   │       └── AppLayout.tsx
+│   │   │       └── AppLayout.tsx   # Auth check + layout wrapper
 │   │   ├── store/
-│   │   │   ├── auth.store.ts
-│   │   │   ├── notes.store.ts
-│   │   │   └── flashcards.store.ts
+│   │   │   ├── auth.store.ts       # Login, register, logout, persist
+│   │   │   ├── notes.store.ts      # CRUD + tag filtering + search
+│   │   │   └── flashcards.store.ts # Generate, review, delete
 │   │   └── lib/
-│   │       └── api.ts          # Axios instance with interceptors
+│   │       └── api.ts              # Axios instance with JWT interceptor
 │   ├── tailwind.config.ts
+│   ├── .env.local
 │   └── package.json
 │
-└── backend/                    # Express REST API
-├── src/
-│   ├── index.js            # Entry point, middleware setup
-│   ├── db/
-│   │   ├── pool.js         # PostgreSQL connection pool
-│   │   └── migrate.js      # Database schema migration
-│   ├── middleware/
-│   │   ├── auth.js         # JWT verification
-│   │   ├── errorHandler.js # Global error handling
-│   │   ├── notFound.js     # 404 handler
-│   │   └── validate.js     # express-validator helper
-│   ├── controllers/
-│   │   ├── auth.controller.js
-│   │   ├── notes.controller.js
-│   │   ├── flashcards.controller.js
-│   │   └── dashboard.controller.js
-│   ├── services/
-│   │   ├── auth.service.js        # Register, login, JWT
-│   │   ├── notes.service.js       # CRUD + tag filtering
-│   │   ├── flashcards.service.js  # Generation + SM-2 algorithm
-│   │   └── dashboard.service.js   # Aggregated stats
-│   └── routes/
-│       ├── auth.routes.js
-│       ├── notes.routes.js
-│       ├── flashcards.routes.js
-│       ├── dashboard.routes.js
-│       └── tags.routes.js
-├── .env
-└── package.json
+└── backend/                        # Express REST API
+    ├── src/
+    │   ├── index.js                # Entry point, CORS, rate limiting
+    │   ├── db/
+    │   │   ├── pool.js             # PostgreSQL connection pool
+    │   │   └── migrate.js          # Full schema with indexes + triggers
+    │   ├── middleware/
+    │   │   ├── auth.js             # JWT verification middleware
+    │   │   ├── errorHandler.js     # Friendly error messages
+    │   │   ├── notFound.js         # 404 handler
+    │   │   └── validate.js         # express-validator helper
+    │   ├── controllers/
+    │   │   ├── auth.controller.js
+    │   │   ├── notes.controller.js
+    │   │   ├── flashcards.controller.js
+    │   │   └── dashboard.controller.js
+    │   ├── services/
+    │   │   ├── auth.service.js        # Register, login, bcrypt, JWT
+    │   │   ├── notes.service.js       # CRUD + tag junction + pagination
+    │   │   ├── flashcards.service.js  # SM-2 algorithm + AI generation
+    │   │   └── dashboard.service.js   # Aggregated stats queries
+    │   └── routes/
+    │       ├── auth.routes.js
+    │       ├── notes.routes.js
+    │       ├── flashcards.routes.js
+    │       ├── dashboard.routes.js
+    │       └── tags.routes.js
+    ├── .env
+    └── package.json
+```
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Getting Started Locally
 
 ### Prerequisites
-- Node.js 18 or higher
-- PostgreSQL 14+ (local or cloud)
-- DeepSeek API key — free at https://platform.deepseek.com
+
+- Node.js 18+
+- PostgreSQL database — local or free tier at [railway.app](https://railway.app)
+- DeepSeek API key — free $5 credit at [platform.deepseek.com](https://platform.deepseek.com)
 
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/remindly.git
-cd remindly
+git clone https://github.com/doaoww/Remindly.git
+cd Remindly
 ```
 
 ### 2. Set up the Backend
@@ -274,6 +195,7 @@ npm install
 ```
 
 Create `backend/.env`:
+
 ```env
 PORT=4000
 DATABASE_URL=postgresql://postgres:password@localhost:5432/remindly
@@ -284,18 +206,21 @@ NODE_ENV=development
 CLIENT_URL=http://localhost:3000
 ```
 
-Run migrations to create all database tables:
+Run database migrations:
+
 ```bash
 npm run db:migrate
 ```
 
-Start the development server:
+Start the backend:
+
 ```bash
 npm run dev
-# Backend running at http://localhost:4000
+# Running at http://localhost:4000
 ```
 
 Test it's working:
+
 ```bash
 curl http://localhost:4000/health
 # {"status":"ok","timestamp":"..."}
@@ -309,19 +234,63 @@ npm install
 ```
 
 Create `frontend/.env.local`:
+
 ```env
 NEXT_PUBLIC_API_URL=http://localhost:4000/api
 ```
 
 Start the frontend:
+
 ```bash
 npm run dev
-# Frontend running at http://localhost:3000
+# Running at http://localhost:3000
 ```
 
-### 4. Open the app
+Open [http://localhost:3000](http://localhost:3000), register an account, and start studying!
 
-Visit `http://localhost:3000`, register an account, and start studying!
+---
+
+## 🌐 Deploying to Production
+
+### Backend → Railway
+
+1. Push code to GitHub
+2. Go to [railway.app](https://railway.app) → **New Project** → **Deploy from GitHub**
+3. Set root directory: `backend`
+4. Set start command: `node src/index.js`
+5. Add a **PostgreSQL** service → copy its `DATABASE_URL`
+6. Add environment variables:
+
+| Variable | Value |
+|----------|-------|
+| `DATABASE_URL` | Railway PostgreSQL URL |
+| `JWT_SECRET` | Random 32+ char string |
+| `JWT_EXPIRES_IN` | `7d` |
+| `DEEPSEEK_API_KEY` | From platform.deepseek.com |
+| `NODE_ENV` | `production` |
+| `CLIENT_URL` | `https://your-app.vercel.app` |
+| `PORT` | `4000` |
+
+7. Run migrations against Railway DB:
+```bash
+# Temporarily set DATABASE_URL in local .env to Railway URL, then:
+npm run db:migrate
+```
+8. Generate domain in **Settings → Networking**
+
+### Frontend → Vercel
+
+1. Go to [vercel.com](https://vercel.com) → **Add New Project** → import repo
+2. Set root directory: `frontend`
+3. Add environment variable:
+
+| Variable | Value |
+|----------|-------|
+| `NEXT_PUBLIC_API_URL` | `https://your-backend.railway.app/api` |
+
+4. Click **Deploy**
+
+Auto-deploys on every push to `main`. ✅
 
 ---
 
@@ -330,104 +299,107 @@ Visit `http://localhost:3000`, register an account, and start studying!
 All endpoints except auth require `Authorization: Bearer <token>` header.
 
 ### Authentication
-
-POST /api/auth/register   { email, password, fullName }
-POST /api/auth/login      { email, password }
-GET  /api/auth/me         → current user
+```
+POST /api/auth/register    { email, password, fullName }
+POST /api/auth/login       { email, password }
+GET  /api/auth/me          → current user info
+```
 
 ### Notes
-
+```
 GET    /api/notes              ?search=&tagId=&page=&limit=
 GET    /api/notes/:id
 POST   /api/notes              { title, content, tagIds[], isPinned }
 PUT    /api/notes/:id          { title, content, tagIds[], isPinned }
 DELETE /api/notes/:id
+```
 
 ### Flashcards
-
-GET    /api/flashcards         ?noteId=&dueOnly=true&page=&limit=
-POST   /api/flashcards         { question, answer, noteId }
-POST   /api/flashcards/generate { noteId, mode: "rule"|"ai" }
-POST   /api/flashcards/:id/review { rating: "easy"|"hard"|"again" }
+```
+GET    /api/flashcards              ?noteId=&dueOnly=true&page=&limit=
+POST   /api/flashcards              { question, answer, noteId }
+POST   /api/flashcards/generate     { noteId, mode: "rule"|"ai" }
+POST   /api/flashcards/:id/review   { rating: "easy"|"hard"|"again" }
 DELETE /api/flashcards/:id
+```
 
 ### Tags
-
+```
 GET    /api/tags
 POST   /api/tags               { name, color }
 DELETE /api/tags/:id
+```
 
 ### Dashboard
-
+```
 GET /api/dashboard → { stats, dueCards, weeklyActivity, recentNotes }
+```
 
 ---
 
 ## 🧠 Spaced Repetition Algorithm
 
-Remindly implements a simplified SM-2 algorithm. Each flashcard stores:
+Remindly implements the **SM-2 algorithm** — the same one used by Anki. Each flashcard stores:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `ease_factor` | decimal | Multiplier for interval growth (starts at 2.5) |
+| `ease_factor` | decimal | Multiplier for interval growth (default 2.5) |
 | `interval_days` | integer | Days until next review |
-| `repetition_count` | integer | Times reviewed successfully |
-| `next_review_date` | timestamp | When to show the card again |
+| `repetition_count` | integer | Number of successful reviews |
+| `next_review_date` | timestamp | Exact date to show the card again |
+| `last_review_date` | timestamp | When it was last reviewed |
 
-**Interval progression:**
-
+**How intervals grow:**
+```
 Easy answers:  1d → 3d → 7d → 14d → 30d → 60d → 120d
-Hard answers:  interval × 0.6 (review sooner)
-Again:         reset to 1 day
+Hard answers:  current interval × 0.6 (see it sooner)
+Again:         reset to 1 day (start over)
+```
 
-**Ease factor changes:**
-- Easy: +0.15 (max 2.5)
-- Hard: -0.15 (min 1.3)
-- Again: -0.20 (min 1.3)
-
----
-
-## 🌐 Deployment
-
-### Backend → Railway
-1. Push to GitHub
-2. New Railway project → Deploy from GitHub
-3. Set root directory: `backend`
-4. Set start command: `node src/index.js`
-5. Add environment variables (see `.env` above)
-6. Add PostgreSQL service → copy `DATABASE_URL` to backend variables
-7. Run `npm run db:migrate` against Railway DB
-8. Generate domain in Settings → Networking
-
-### Frontend → Vercel
-1. Import GitHub repo on Vercel
-2. Set root directory: `frontend`
-3. Add environment variable: `NEXT_PUBLIC_API_URL=https://your-backend.railway.app/api`
-4. Deploy
-
-Auto-deploys on every push to `main` branch. ✅
+**Ease factor adjustments per rating:**
+- Easy: +0.15 (max 2.5) — card gets easier to schedule
+- Hard: −0.15 (min 1.3) — card needs more frequent review
+- Again: −0.20 (min 1.3) — significant penalty
 
 ---
 
-## 🤝 Contributing
+## 🗃 Database Schema
 
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Commit your changes: `git commit -m 'Add amazing feature'`
-4. Push to the branch: `git push origin feature/amazing-feature`
-5. Open a Pull Request
+```sql
+users         — id, email, password_hash, full_name, created_at
+notes         — id, user_id, title, content, is_pinned, created_at, updated_at
+tags          — id, user_id, name, color
+note_tags     — note_id, tag_id (junction table)
+flashcards    — id, user_id, note_id, question, answer,
+                ease_factor, interval_days, repetition_count,
+                last_review_date, next_review_date
+review_history — id, user_id, flashcard_id, rating, reviewed_at
+```
 
 ---
 
-## 📄 License
+## 📝 Available Scripts
 
-MIT License — free to use, modify, and distribute for any purpose.
+### Backend
+```bash
+npm run dev          # Start with nodemon (hot reload)
+npm start            # Start production server
+npm run db:migrate   # Create/update database tables
+```
+
+### Frontend
+```bash
+npm run dev          # Start Next.js dev server
+npm run build        # Build for production
+npm start            # Start production server
+npm run lint         # Run ESLint
+```
 
 ---
 
-## 👤 Author
+## 👩‍💻 Author
 
-**Remindly** — Built for students who want to actually remember what they study, not just read it.
+**doaoww** — [github.com/doaoww](https://github.com/doaoww)
 
-> *"The goal of education is not to fill a bucket but to light a fire."*
-
+Built as a full-stack portfolio project demonstrating Next.js App Router, Express REST API, PostgreSQL with raw SQL, JWT authentication, SM-2 spaced repetition algorithm, and AI integration with DeepSeek.
+```
