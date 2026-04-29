@@ -1,5 +1,4 @@
-```markdown
-# 🧠 Remindly — Intelligent Student Learning Platform
+🌿 Remindly — Intelligent Student Learning Platform
 
 > Turn your notes into lasting memory. AI-powered flashcards + spaced repetition, all in one place.
 
@@ -27,7 +26,7 @@ A: Deoxyribonucleic acid, carries genetic information
 1. Osmosis - Movement of water through a semipermeable membrane
 ```
 
-**AI Generation (DeepSeek)** — works on any note format. The AI reads your notes and intelligently creates Q&A flashcards covering the key concepts. No special formatting needed.
+**AI Generation (Gemini)** — works on any note format. The AI reads your notes and intelligently creates Q&A flashcards covering the key concepts. No special formatting needed.
 
 Generated cards appear instantly in the side panel. Duplicate cards are automatically skipped.
 
@@ -65,7 +64,7 @@ In the **Flashcards** page, cards are grouped into folders by the note they were
 | Backend | Node.js + Express |
 | Database | PostgreSQL |
 | Authentication | JWT + bcryptjs |
-| AI Generation | DeepSeek API |
+| AI Generation | Gemini API |
 | Deployment (Frontend) | Vercel |
 | Deployment (Backend) | Railway |
 
@@ -78,7 +77,7 @@ In the **Flashcards** page, cards are grouped into folders by the note they were
 - Full-text search across all notes
 - Pin important notes to the top
 - Auto-save as you type (1.5s debounce)
-- AI flashcard generation via DeepSeek — works on any note format
+- AI flashcard generation via Gemini — works on any note format
 - Pattern matching generation — free and instant, no API key needed
 - Duplicate card detection — never generates the same card twice
 - Flashcard folders — cards grouped by their source note
@@ -178,7 +177,7 @@ remindly/
 
 - Node.js 18+
 - PostgreSQL database — local or free tier at [railway.app](https://railway.app)
-- DeepSeek API key — free $5 credit at [platform.deepseek.com](https://platform.deepseek.com)
+- Gemini API key — free $5 credit at [aistudio.google.com](https://aistudio.google.com)
 
 ### 1. Clone the repository
 
@@ -201,7 +200,7 @@ PORT=4000
 DATABASE_URL=postgresql://postgres:password@localhost:5432/remindly
 JWT_SECRET=your_super_secret_jwt_key_minimum_32_chars
 JWT_EXPIRES_IN=7d
-DEEPSEEK_API_KEY=sk-your-deepseek-key-here
+GEMINI_API_KEY=sk-your-gemini-key-here
 NODE_ENV=development
 CLIENT_URL=http://localhost:3000
 ```
@@ -266,7 +265,7 @@ Open [http://localhost:3000](http://localhost:3000), register an account, and st
 | `DATABASE_URL` | Railway PostgreSQL URL |
 | `JWT_SECRET` | Random 32+ char string |
 | `JWT_EXPIRES_IN` | `7d` |
-| `DEEPSEEK_API_KEY` | From platform.deepseek.com |
+| `GEMINI_API_KEY` | From aistudio.google.com |
 | `NODE_ENV` | `production` |
 | `CLIENT_URL` | `https://your-app.vercel.app` |
 | `PORT` | `4000` |
@@ -401,5 +400,4 @@ npm run lint         # Run ESLint
 
 **doaoww** — [github.com/doaoww](https://github.com/doaoww)
 
-Built as a full-stack portfolio project demonstrating Next.js App Router, Express REST API, PostgreSQL with raw SQL, JWT authentication, SM-2 spaced repetition algorithm, and AI integration with DeepSeek.
-```
+Built as a full-stack portfolio project demonstrating Next.js App Router, Express REST API, PostgreSQL with raw SQL, JWT authentication, SM-2 spaced repetition algorithm, and AI integration with Gemini API.
